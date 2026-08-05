@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--color-surface));
+  color: rgb(var(--color-ink));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background-color: rgb(var(--color-accent));
+  color: #fff;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 2px;
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-block text-xs font-semibold tracking-[0.18em] uppercase text-accent;
+  }
+
+  .section-heading {
+    @apply font-display text-3xl sm:text-4xl font-bold text-ink leading-tight;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 ease-out;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white shadow-soft hover:bg-accent-dark hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply btn border border-white/30 text-white bg-white/5 hover:bg-white/15 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-primary/20 text-primary bg-transparent hover:bg-primary/5 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white shadow-card transition-transform duration-300 ease-out;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+}
